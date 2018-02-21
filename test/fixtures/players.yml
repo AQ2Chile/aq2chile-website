@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  email: MyString
+  frags: 1
+  last_online: 2018-02-20 21:32:50
+  verified: false
+  updates_count: 1
+  minutes_online: 1
+
+two:
+  name: MyString
+  email: MyString
+  frags: 1
+  last_online: 2018-02-20 21:32:50
+  verified: false
+  updates_count: 1
+  minutes_online: 1
