@@ -1,0 +1,23 @@
+.modal.fade{ id: server[:snaked_hostname], role: "dialog", "aria-labelledby": "sv-info", "aria-hidden": true }
+  .modal-dialog{ role: "document" }
+    .modal-content
+      .modal-header
+        %h5.modal-title= server[:hostname]
+        %button.close{ type: "button", "data-dismiss": "modal", "aria-label": "Close" }
+          %span{ "aria-hidden": "true" } &times;
+
+      .modal-body
+        %table.table.table-bordered
+          %thead
+            %tr
+              %th Name
+              %th Frags
+              %th Ping
+              %th Time Online
+          %tbody
+            - server[:players].each do |player|
+              %tr
+                %td= player[:name]
+                %td= player[:frags]
+                %td= player[:ping]
+                %td "-"

@@ -1,0 +1,21 @@
+%h1 Servers
+
+%table.table.table-striped.table-hover
+  %thead
+    %tr
+      %th Name
+      %th Players
+      %th Map
+      %th Address
+      %th
+      %th
+  %tbody
+    - status.each do |server|
+      %tr{ "data-toggle": "modal", "data-target": "##{server[:snaked_hostname]}" }
+        %td= server[:hostname]
+        %td= "#{server[:players].count}/#{server[:maxclients]}"
+        %td= server[:mapname]
+        %td= "#{server[:address]}:#{server[:port]}"
+        %td
+          %a.btn.btn-mini.btn-success{href: "q2online://connect/action/#{server[:address]}:#{server[:port]}"} Join
+        %td= render "sv_info_table", server: server
