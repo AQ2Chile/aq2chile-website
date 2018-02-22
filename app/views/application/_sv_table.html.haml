@@ -9,14 +9,25 @@
       %th Address
       %th Country
       %th
+
   %tbody
     - @status_list.each do |status|
       %tr{ "data-toggle": "modal", "data-target": "##{status[:extras][:snaked_name]}" }
-        %td= status[:hostname]
-        %td= "#{status[:players].count}/#{status[:maxclients]}"
-        %td= status[:mapname]
-        %td= "#{status[:extras][:address]}:#{status[:extras][:port]}"
-        %td= status[:extras][:country]
+        %td
+          .text-left.align-middle= status[:hostname]
+
+        %td
+          .text-center.align-middle= "#{status[:players].count}/#{status[:maxclients]}"
+
+        %td
+          .text-center.align-middle= status[:mapname]
+
+        %td
+          .text-center.align-middle= "#{status[:extras][:address]}:#{status[:extras][:port]}"
+
+        %td{ "data-sort": status[:extras][:country] }
+          .text-center.align-middle= image_tag(image_path("flags/#{status[:extras][:country].downcase}.png"), class: "daflag" ,height: "36")
+
         %td
           %a.btn.btn-mini.btn-success{href: "q2online://connect/action/#{status[:extras][:address]}:#{status[:port]}"} Join
           = render "sv_info_table", status: status

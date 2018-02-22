@@ -5,6 +5,8 @@ class HomeController < ApplicationController
     Server.all.each do |server|
       extras               = {}
       sv_status            = Q2ServerQuery::Client.new(server.address, server.port).status
+      next if sv_status.nil?
+
       extras[:address]     = server.address
       extras[:port]        = server.port
       extras[:snaked_name] = sv_status[:hostname].underscore.delete(" ")

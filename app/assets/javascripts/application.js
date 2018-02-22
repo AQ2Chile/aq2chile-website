@@ -7,5 +7,13 @@
 //= require_tree .
 
 $(document).ready( function () {
-    $('#sv-table').DataTable();
+    $('#sv-table').DataTable({
+      "bPaginate": false,
+      "columnDefs": [
+        { "orderable": false, "targets": -1 }
+      ],
+      "oLanguage": {
+        "sInfo": "_TOTAL_ servers"
+      }
+    });
 } );
