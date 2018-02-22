@@ -17,7 +17,14 @@
           %tbody
             - status[:players].each do |player|
               %tr
-                %td= player[:name]
-                %td= player[:frags]
-                %td= player[:ping]
-                %td "-"
+                %td
+                  .text-center.align-middle= player[:name]
+
+                %td
+                  .text-center.align-middle= player[:frags]
+
+                %td
+                  .text-center.align-middle= player[:ping]
+
+                %td
+                  .text-center.align-middle "-"

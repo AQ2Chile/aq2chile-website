@@ -29,5 +29,6 @@
           .text-center.align-middle= image_tag(image_path("flags/#{status[:extras][:country].downcase}.png"), class: "daflag" ,height: "36")
 
         %td
-          %a.btn.btn-mini.btn-success{href: "q2online://connect/action/#{status[:extras][:address]}:#{status[:port]}"} Join
+          .text-center.align-middle
+            %a.btn.btn-mini.btn-success{href: "q2online://connect/action/#{status[:extras][:address]}:#{status[:port]}"} Join
           = render "sv_info_table", status: status
