@@ -22,7 +22,7 @@ class Server < ApplicationRecord
       sleep(2)
       client    = Q2ServerQuery::Client.new(sv[:address], sv[:port])
       sv_status = client.status
-      server    = self.find_or_initialize_by(address: sv[:address])
+      server    = self.find_or_initialize_by(address: sv[:address], port: sv[:port])
 
       server.name     = sv_status[:hostname]
       server.address  = sv[:address]

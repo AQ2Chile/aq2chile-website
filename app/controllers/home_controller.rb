@@ -1,12 +1,16 @@
 class HomeController < ApplicationController
   def index
-    @status = []
-    Server.all.each do |server|
-      sv_status       = Q2ServerQuery::Client.new(server[:address], server[:port]).status
-      address         = server[:address]
-      snaked_hostname = sv_status[:hostname].underscore.delete(" ")
+    @status_list = []
 
-      @status << sv_status.merge(address: address, snaked_hostname: snaked_hostname).with_indifferent_access
+    Server.all.each do |server|
+      extras               = {}
+      sv_status            = Q2ServerQuery::Client.new(server.address, server.port).status
+      extras[:address]     = server.address
+      extras[:port]        = server.port
+      extras[:snaked_name] = sv_status[:hostname].underscore.delete(" ")
+      extras[:country]     = server.country
+
+      @status_list << sv_status.merge(extras: extras).with_indifferent_access
     end
   end
 end

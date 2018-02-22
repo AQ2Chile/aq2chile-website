@@ -1,21 +1,22 @@
 %h1 Servers
 
-%table.table.table-striped.table-hover
+%table#sv-table.table.table-striped.table-hover
   %thead
     %tr
       %th Name
       %th Players
       %th Map
       %th Address
-      %th
+      %th Country
       %th
   %tbody
-    - status.each do |server|
-      %tr{ "data-toggle": "modal", "data-target": "##{server[:snaked_hostname]}" }
-        %td= server[:hostname]
-        %td= "#{server[:players].count}/#{server[:maxclients]}"
-        %td= server[:mapname]
-        %td= "#{server[:address]}:#{server[:port]}"
+    - @status_list.each do |status|
+      %tr{ "data-toggle": "modal", "data-target": "##{status[:extras][:snaked_name]}" }
+        %td= status[:hostname]
+        %td= "#{status[:players].count}/#{status[:maxclients]}"
+        %td= status[:mapname]
+        %td= "#{status[:extras][:address]}:#{status[:extras][:port]}"
+        %td= status[:extras][:country]
         %td
-          %a.btn.btn-mini.btn-success{href: "q2online://connect/action/#{server[:address]}:#{server[:port]}"} Join
-        %td= render "sv_info_table", server: server
+          %a.btn.btn-mini.btn-success{href: "q2online://connect/action/#{status[:extras][:address]}:#{status[:port]}"} Join
+          = render "sv_info_table", status: status
