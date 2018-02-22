@@ -1,13 +1,14 @@
 GIT
+  remote: https://github.com/aq2chile/q2_server_query.git
+  revision: c064283f98277553d38954a706eb4353e6116f9f
+  specs:
+    q2_server_query (0.9.3)
+
+GIT
   remote: https://github.com/elfenars/geo_ip.git
   revision: a5793325ccbdc33f76b42a204e0f78797f775897
   specs:
     geo_ip (0.6.2)
-
-PATH
-  remote: /Users/rojo/Dropbox/Dev/Rojo/github/q2_server_query
-  specs:
-    q2_server_query (0.9.3)
 
 GEM
   remote: https://rubygems.org/
