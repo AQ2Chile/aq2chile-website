@@ -15,4 +15,7 @@ class HomeController < ApplicationController
       @status_list << sv_status.merge(extras: extras).with_indifferent_access
     end
   end
+
+  def downloads
+  end
 end

@@ -7,13 +7,13 @@
 header.masthead {
   margin-bottom: 50px;
   background: no-repeat center center;
-  background-color: #868e96;
   background-attachment: scroll;
   position: relative;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
+  height: 625px;
 }
 
 header.masthead .overlay {
@@ -29,8 +29,13 @@ header.masthead .overlay {
 header.masthead .page-heading,
 header.masthead .post-heading,
 header.masthead .site-heading {
-  padding: 200px 0 150px;
+  padding: 250px 0 150px;
   color: white;
+}
+
+#aq2chile-title {
+  font-size: 75px;
+  font-weight: bold;
 }
 
 .daflag {
