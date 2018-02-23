@@ -1,10 +1,16 @@
 class Server < ApplicationRecord
 
-  def update_info(sv_status)
-    self.name     = sv_status[:hostname]
-    self.country  = GeoIp.geolocation(address, precision: :country).try(:[], :country_code)
-    self.game     = sv_status[:gamename]
-    self.save
+  default_scope { where('last_available > ?', 1.day.ago) }
+
+  def update_from_status(sv_status)
+    attrs = {
+      name:           sv_status[:hostname],
+      country:        GeoIp.geolocation(address, precision: :country).try(:[], :country_code),
+      game:           sv_status[:gamename],
+      last_available: DateTime.now
+    }
+
+    self.update(attrs)
   end
 
   def self.update_servers_list
@@ -14,7 +20,7 @@ class Server < ApplicationRecord
       sv_status = Q2ServerQuery::Client.new(sv[:address], sv[:port]).status
       server    = find_or_create_by!(address: sv[:address], port: sv[:port])
 
-      server.update_info(sv_status)
+      server.update_from_status(sv_status)
       sleep(1) # Because geo_ip allows 1 req per second.
     end
   end
