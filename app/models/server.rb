@@ -1,6 +1,6 @@
 class Server < ApplicationRecord
 
-  default_scope { where('last_available > ?', 1.day.ago) }
+  default_scope { where('last_available > ?', 30.minutes.ago) }
 
   def update_from_status(sv_status)
     attrs = {
