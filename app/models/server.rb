@@ -10,6 +10,7 @@ class Server < ApplicationRecord
       last_available: DateTime.now
     }
 
+    Rails.logger.info "---- Updating Server #{self.address}:#{self.port}"
     self.update(attrs)
   end
 
