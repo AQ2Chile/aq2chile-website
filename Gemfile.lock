@@ -1,8 +1,8 @@
 GIT
   remote: https://github.com/aq2chile/q2_server_query.git
-  revision: c064283f98277553d38954a706eb4353e6116f9f
+  revision: 43a683da89df1fafa42911e1f815c3b54ac266ea
   specs:
-    q2_server_query (0.9.3)
+    q2_server_query (0.9.4)
 
 GIT
   remote: https://github.com/elfenars/geo_ip.git
