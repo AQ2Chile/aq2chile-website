@@ -14,7 +14,7 @@ gem 'turbolinks', '~> 5'
 gem 'bootstrap', '~> 4.0.0.alpha6'
 gem 'jquery-rails'
 gem 'haml-rails'
-gem 'q2_server_query', path: "/Users/rojo/Dev/Rojo/Github/q2_server_query"
+gem 'q2_server_query'
 gem 'geo_ip', github: 'elfenars/geo_ip'
 
 group :development, :test do
