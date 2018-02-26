@@ -2,7 +2,7 @@ class HomeController < ApplicationController
   def index
     @status_list = []
 
-    Server.all.each do |server|
+    Server.available.each do |server|
       extras               = {}
       sv_status            = Q2ServerQuery::Client.new(server.address, server.port).status
       next if sv_status.nil?
