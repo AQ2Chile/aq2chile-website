@@ -1,6 +1,6 @@
 class Server < ApplicationRecord
 
-  default_scope { where('last_available > ?', 30.minutes.ago) }
+  scope :available, -> { where('last_available > ?', 30.minutes.ago) }
 
   def update_from_status(sv_status)
     attrs = {
@@ -14,12 +14,12 @@ class Server < ApplicationRecord
     self.update(attrs)
   end
 
-  def self.update_servers_list
-    sv_list = self.get_q2servers_list
+  def self.update_servers_list(only_available: true)
+    sv_list = ( only_available ? (Server.available) : (self.get_q2servers_list) )
 
     sv_list.each do |sv|
-      sv_status = Q2ServerQuery::Client.new(sv[:address], sv[:port]).status
       server    = find_or_create_by!(address: sv[:address], port: sv[:port])
+      sv_status = Q2ServerQuery::Client.new(sv[:address], sv[:port]).status
 
       server.update_from_status(sv_status)
       sleep(1) # Because geo_ip allows 1 req per second.
