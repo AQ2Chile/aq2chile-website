@@ -1,0 +1,8 @@
+AllCops:
+  DisabledByDefault: true
+
+Bundler:
+  Enabled: true
+
+Lint:
+  Enabled: true

@@ -15,7 +15,7 @@ class Server < ApplicationRecord
   end
 
   def self.update_servers_list(only_available: true)
-    sv_list = ( only_available ? (Server.available) : (self.get_q2servers_list) )
+    sv_list = (only_available ? available : get_q2servers_list)
 
     sv_list.each do |sv|
       server    = find_or_create_by!(address: sv[:address], port: sv[:port])

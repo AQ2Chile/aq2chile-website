@@ -11,15 +11,10 @@ CommitMsg:
     enabled: true
 
 PreCommit:
-  RubyLint:
-    enabled: true
-    problem_on_unmodified_line: ignore
-
   RuboCop:
     enabled: true
     problem_on_unmodified_line: ignore
     on_warn: fail
-
 
   TrailingWhitespace:
     enabled: true

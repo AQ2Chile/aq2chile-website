@@ -41,7 +41,6 @@ class ServerQuery
     end
 
     @players_list = build_players(unparsed_players)
-    binding.pry
 
     basic_info.merge(players: @players_list).with_indifferent_access
   end
