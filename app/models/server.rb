@@ -14,8 +14,10 @@ class Server < ApplicationRecord
     self.update(attrs)
   end
 
-  def self.update_servers_list(only_available: true)
-    sv_list = (only_available ? available : get_q2servers_list)
+  # Get servers list and request status via the Q2ServerQuery gem.
+  # If all, fetch q2servers.com list, otherwise just check available ones.
+  def self.update_servers_list(all: true)
+    sv_list = (all ? available : get_q2servers_list)
 
     sv_list.each do |sv|
       server    = find_or_create_by!(address: sv[:address], port: sv[:port])
@@ -26,6 +28,7 @@ class Server < ApplicationRecord
     end
   end
 
+  # Only get the IPs from q2servers.com
   def self.get_q2servers_list
     uri         = URI.parse "http://q2servers.com/?mod=action&raw=1"
     res         = Net::HTTP.get_response uri
