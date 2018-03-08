@@ -1,0 +1,42 @@
+verify_signatures: false
+
+CommitMsg:
+  CapitalizedSubject:
+    enabled: false
+
+  HardTabs:
+    enabled: true
+
+  SingleLineSubject:
+    enabled: true
+
+PreCommit:
+  RubyLint:
+    enabled: true
+    problem_on_unmodified_line: ignore
+
+  RuboCop:
+    enabled: true
+    problem_on_unmodified_line: ignore
+    on_warn: fail
+
+
+  TrailingWhitespace:
+    enabled: true
+
+  BundleCheck:
+    enabled: true
+
+  HardTabs:
+    enabled: true
+
+  YamlSyntax:
+    enabled: true
+    required_files: true
+
+PostCheckout:
+  ALL: # Special hook name that customizes all hooks of this type
+    quiet: true # Change all post-checkout hooks to only display output on failure
+
+  IndexTags:
+    enabled: true # Generate a tags file with `ctags` each time HEAD changes

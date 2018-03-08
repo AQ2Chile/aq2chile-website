@@ -5,17 +5,18 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
-gem 'rails', '~> 5.1.4'
+gem 'bootstrap', '~> 4.0.0.alpha6'
+gem 'discordrb'
+gem 'geo_ip', github: 'elfenars/geo_ip'
+gem 'haml-rails'
+gem 'jquery-rails'
 gem 'pg'
 gem 'puma', '~> 3.7'
-gem 'sass-rails', '~> 5.0'
-gem 'uglifier', '>= 1.3.0'
-gem 'turbolinks', '~> 5'
-gem 'bootstrap', '~> 4.0.0.alpha6'
-gem 'jquery-rails'
-gem 'haml-rails'
 gem 'q2_server_query'
-gem 'geo_ip', github: 'elfenars/geo_ip'
+gem 'rails', '~> 5.1.4'
+gem 'sass-rails', '~> 5.0'
+gem 'turbolinks', '~> 5'
+gem 'uglifier', '>= 1.3.0'
 
 group :development, :test do
   gem 'pry-rails'
